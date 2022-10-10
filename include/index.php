@@ -26,7 +26,7 @@ if (!class_exists('UEI_ICONS')) {
 
             if (!isset(self::$instance) && !(self::$instance instanceof UEI_ICONS)) {
 
-                self::$instance = new UEI_ICONS;
+                self::$instance = new UEI_ICONS();
 
                 self::$instance->setup_constants();
 
@@ -81,10 +81,6 @@ if (!class_exists('UEI_ICONS')) {
          *
          */
         private function includes() {
-
-
-//            require_once UEI_PLUGIN_DIR . 'includes/helper-functions.php';
-
         }
 
         /**
@@ -94,36 +90,31 @@ if (!class_exists('UEI_ICONS')) {
          * them to allow the plugin to be localised
          */
         public function load_plugin_textdomain() {
-
-
         }
 
         /**
          * Setup the default hooks and actions
          */
         private function hooks() {
-
             add_action('plugins_loaded', array($this, 'load_plugin_textdomain'));
             add_filter( 'elementor/icons_manager/additional_tabs', array($this, 'add_material_icons_tabs' ) );
             add_action('elementor/frontend/after_enqueue_styles', array($this, 'register_frontend_styles'), 10);
-
         }
 
         public function register_frontend_styles() {
-            wp_enqueue_style( 'iconoir-icon', UEI_PLUGIN_URL . 'assets/css/iconoir.css');
+            wp_enqueue_style( 'iconoir-icon', 'https://cdn.jsdelivr.net/gh/lucaburgio/iconoir@main/css/iconoir.css');
         }
 
         public function add_material_icons_tabs( $tabs = array() ) {
-
-            $tabs['ueiicons'] = array(
+            $icons = include UEI_PLUGIN_DIR . 'icons.php';
+            $tabs['ueiiconoir'] = array(
                 'name'          => 'ueiiconoir',
                 'label'         => esc_html__( 'Iconoir', 'uei' ),
                 'labelIcon'     => 'iconoir-2x2-cell',
                 'prefix'        => 'iconoir-',
-                'displayPrefix' => 'iconoir',
-                'url'           => '',
-                'enqueue'           => [UEI_PLUGIN_URL . 'assets/css/iconoir.css'],
-                'fetchJson'     => UEI_PLUGIN_URL . 'assets/js/iconoir.json',
+                'displayPrefix' => 'ueiiconoir',
+                'url'           => 'https://cdn.jsdelivr.net/gh/lucaburgio/iconoir@main/css/iconoir.css',
+                'icons'         => $icons,
                 'ver'           => '3.0.1',
             );
             return $tabs;
