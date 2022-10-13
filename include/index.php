@@ -116,7 +116,8 @@ if (!class_exists('UEI_ICONS')) {
                 'prefix'        => 'iconoir-',
                 'displayPrefix' => 'ueiiconoir',
                 'url'           => 'https://cdn.jsdelivr.net/gh/lucaburgio/iconoir@main/css/iconoir.css',
-                'icons'         => $iconoir,
+                //'icons'         => $iconoir,
+                'fetchJson'         => wp_json_encode($iconoir),
                 'ver'           => '3.0.1',
             );
             $tabs['iconsax'] = array(
@@ -126,7 +127,8 @@ if (!class_exists('UEI_ICONS')) {
                 'prefix'        => 'isax-',
                 'displayPrefix' => 'isax',
                 'url'           => UEI_PLUGIN_URL . 'assets/css/isax.css',
-                'icons'         => $iconsax,
+                //'icons'         => $iconsax,
+                'fetchJson'         => wp_json_encode($iconsax),
                 'ver'           => '3.0.1',
             );
             return $tabs;
