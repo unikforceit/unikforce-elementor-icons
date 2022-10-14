@@ -104,7 +104,6 @@ if (!class_exists('UEI_ICONS')) {
         public function register_frontend_styles() {
             wp_enqueue_style( 'iconoir-icon', 'https://cdn.jsdelivr.net/gh/lucaburgio/iconoir@main/css/iconoir.css');
             wp_enqueue_style( 'iconsax-icon', UEI_PLUGIN_URL . 'assets/css/isax/isax.css');
-            wp_enqueue_style( 'phosphor-icon', UEI_PLUGIN_URL . 'assets/css/phosphor/icons.css');
         }
 
         public function add_material_icons_tabs( $tabs = array() ) {
@@ -121,23 +120,14 @@ if (!class_exists('UEI_ICONS')) {
             $tabs['iconsax'] = array(
                 'name'          => 'ueiiconsax',
                 'label'         => esc_html__( 'Iconsax', 'uei' ),
-                'labelIcon'     => 'isax-dcube',
-                'prefix'        => 'isax-',
+                'labelIcon'     => 'icon-dcube',
+                'prefix'        => 'icon-',
                 'displayPrefix' => 'isax',
                 'url'           => UEI_PLUGIN_URL . 'assets/css/isax/isax.css',
                 'fetchJson'         => UEI_PLUGIN_URL . 'assets/js/isax.json',
                 'ver'           => '3.0.1',
             );
-            $tabs['phosphor'] = array(
-                'name'          => 'ueiphosphor',
-                'label'         => esc_html__( 'Phosphor', 'uei' ),
-                'labelIcon'     => 'ph-book-bold',
-                'prefix'        => 'ph-',
-                'displayPrefix' => 'phosphor',
-                'url'           => UEI_PLUGIN_URL . 'assets/css/phosphor/icons.css',
-                'fetchJson'         => UEI_PLUGIN_URL . 'assets/js/phosphor.json',
-                'ver'           => '3.0.1',
-            );
+
             return $tabs;
         }
     }
