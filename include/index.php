@@ -120,7 +120,7 @@ if (!class_exists('UEI_ICONS')) {
             $tabs['iconsax'] = array(
                 'name'          => 'ueiiconsax',
                 'label'         => esc_html__( 'Iconsax', 'uei' ),
-                'labelIcon'     => 'icon-dcube',
+                'labelIcon'     => 'icon-square',
                 'prefix'        => 'icon-',
                 'displayPrefix' => 'isax',
                 'url'           => UEI_PLUGIN_URL . 'assets/css/isax/isax.css',
